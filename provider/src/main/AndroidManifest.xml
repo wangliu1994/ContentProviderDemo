@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.winnie.provider">
+
+    <permission
+        android:name="edu.android.demos.permission.READ_APPS"
+        android:label="provider permission"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="edu.android.demos.permission.WRITE_APPS"
+        android:label="provider permission"
+        android:protectionLevel="normal" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.example.winnie.provider.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.example.winnie.provider.store.AppCotentProvider"
+            android:authorities="edu.android.demos"
+            android:exported="true"
+            android:readPermission="edu.android.demos.permission.READ_APPS"
+            android:writePermission="edu.android.demos.permission.WRITE_APPS"/>
+        <!--authorities：主机名，用于区分ContentProvider-->
+        <!--android:exported="true" 这个属性用于指示该服务是否能被其他程序应用组件调用或跟他交互； 如果设置成true，则能够被调用或交互，否则不能；-->
+        <!--readPermission：这是访问权限，其他应用想要访问必须设置该权限！-->
+    </application>
+
+</manifest>
